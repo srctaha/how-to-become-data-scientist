@@ -25,6 +25,7 @@ library(knitr)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
 <script type='text/javascript' src='script/custom.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
 
 <!-- Enables HTML tags in nodes -->
 <!-- <script>mermaid.initialize({ securityLevel: 'loose' });</script> -->
@@ -48,7 +49,26 @@ th {
 }
 ```
 
-# Explaining Data Science<br>with three examples<br>from past work
+# Part-1: Intro
+
+## データサイエンティスト vs 機械学習エンジニア
+
+<center>
+```{r, echo=FALSE}
+fname <- here::here("mermaid", "ds_vs_ml.mmd")
+
+DiagrammeR::mermaid(
+  diagram = paste(readLines(fname), collapse="\n"),
+  height = "65%",
+  width = "65%")
+```
+</center>
+
+## ML Systems
+
+<center><img src="img/ml_systems.png" height="400px"/></center>
+
+# Part-2: 3件のケーススタティ
 
 ## Data Science
 
@@ -148,19 +168,24 @@ Psychological theory offers numerous theories to study consumer choices. Data sc
 
 <center><img src="img/tpb.png" height="300px"/></center>
 
-## データサイエンティスト vs 機械学習エンジニア
-
-## ML Systems
-
-<center><img src="img/ml_systems.png" height="400px"/></center>
-
-## Years vs Tooling
+# Part-3
 
 ## 機械学習モデルとは？
 
 ## 書籍
 
 ## データサイエンティストのキャリア
+
+## Years vs Tooling
+
+```{r, echo=FALSE}
+fname <- here::here("mermaid", "tooling_timeline.mmd")
+
+DiagrammeR::mermaid(
+  diagram = paste(readLines(fname), collapse="\n"),
+  height = "100%",
+  width = "100%")
+```
 
 ## データサイエンスの今後
 
