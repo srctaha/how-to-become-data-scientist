@@ -1,0 +1,167 @@
+---
+title: How to become データ<br>サイエンティスト：ケース<br>スタティを通じて学ぶその役割
+author: "Sercan Ahi"
+date: "2023/06/05"
+output:
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
+    transition: faster
+    mathjax: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"
+    css:
+      - css/bootstrap-alert.css
+      - css/bootstrap-table.css
+      - css/styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(here)
+library(DiagrammeR)
+library(knitr)
+```
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+<script type='text/javascript' src='script/custom.js'></script>
+
+<!-- Enables HTML tags in nodes -->
+<!-- <script>mermaid.initialize({ securityLevel: 'loose' });</script> -->
+
+```{css, echo=FALSE}
+pre {
+  margin-left: 80px;
+  width: 90%
+}
+
+ol, ul, p {
+  font-size: 18px !important;
+}
+
+.alert {
+  font-size: 18px !important;
+}
+
+th {
+    text-align:left !important;
+}
+```
+
+# Explaining Data Science<br>with three examples<br>from past work
+
+## Data Science
+
+It is a field that borrow ideas from
+
+1. Statistics
+1. Economics
+1. Psychology
+1. Software Development
+1. Machine Learning
+1. Operations Research
+
+## 1. TV Schedule Optimization
+
+**Task**: Maximize viewership by budget, scheduling, and viewers' availability constraints
+
+<table class="table">
+  <tr>
+    <th>Time</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+  </tr>
+  <tr>
+    <td>8:00-12:00</td>
+    <td>The Big Bang Theory</td>
+    <td>Friends</td>
+    <td>Grey's Anatomy</td>
+    <td>Breaking Bad</td>
+    <td>The Office</td>
+  </tr>
+  <tr>
+    <td>12:00-13:00</td>
+    <td>Game of Thrones</td>
+    <td>Stranger Things</td>
+    <td>NCIS</td>
+    <td>The Walking Dead</td>
+    <td>Black Mirror</td>
+  </tr>
+  <tr>
+    <td>13:00-15:00</td>
+    <td>Law & Order: SVU</td>
+    <td>The Crown</td>
+    <td>CSI: Crime Scene Investigation</td>
+    <td>How to Get Away with Murder</td>
+    <td>Money Heist</td>
+  </tr>
+  <tr>
+    <td>15:00-17:00</td>
+    <td>The Simpsons</td>
+    <td>Friends</td>
+    <td>Grey's Anatomy</td>
+    <td>The Big Bang Theory</td>
+    <td>Breaking Bad</td>
+  </tr>
+  <tr>
+    <td>17:00-19:00</td>
+    <td>Stranger Things</td>
+    <td>The Office</td>
+    <td>Black Mirror</td>
+    <td>Game of Thrones</td>
+    <td>The Crown</td>
+  </tr>
+  <tr>
+    <td>19:00-21:00</td>
+    <td>NCIS</td>
+    <td>Money Heist</td>
+    <td>Law & Order: SVU</td>
+    <td>The Walking Dead</td>
+    <td>CSI: Crime Scene Investigation</td>
+  </tr>
+  <tr>
+    <td>21:00-24:00</td>
+    <td>How to Get Away with Murder</td>
+    <td>The Big Bang Theory</td>
+    <td>Grey's Anatomy</td>
+    <td>Friends</td>
+    <td>Breaking Bad</td>
+  </tr>
+</table>
+
+## 2. Devicing Business Expansion Plans
+
+**Task**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
+
+<center>
+<img src="img/optimization.png" height="400px"/>
+</center>
+
+## 3. Uncovering Barriers to User Spending
+
+**Task**: Identify barriers to user spending on company products and propose an action plan to drive revenue growth
+
+Psychological theory offers numerous theories to study consumer choices. Data scientists apply those theories in their work and produce suggestions to decision-makers based on their findings.
+
+<center><img src="img/tpb.png" height="300px"/></center>
+
+## データサイエンティスト vs 機械学習エンジニア
+
+## ML Systems
+
+<center><img src="img/ml_systems.png" height="400px"/></center>
+
+## Years vs Tooling
+
+## 機械学習モデルとは？
+
+## 書籍
+
+## データサイエンティストのキャリア
+
+## データサイエンスの今後
+
+# Thank you
