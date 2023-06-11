@@ -12,10 +12,10 @@ output:
       - css/bootstrap-alert.css
       - css/bootstrap-table.css
       - css/styles.css
+      - css/font-awesome_6.4.0_css_all.min.css
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
 library(here)
 library(DiagrammeR)
 library(knitr)
@@ -49,6 +49,27 @@ th {
 }
 ```
 
+## 自己紹介
+
+<table class="table">
+<tr>
+  <td><img src="img/turkey.png" height="100px"/></td>
+  <td colspan="2">セルジャン・タハ・アヒ<br>
+  1981年トルコ生まれ → 学位：中東工科大学 → 修士：中東工科大学 → 博士：東京工業大学<br>
+  2011年〜現在、データサイエンスの領域で働いている</td>
+</tr>
+<tr>
+  <td>赤とオレンジの色合いの家の屋根</td>
+  <td>風光明媚なエーゲ海と地中海の海岸線沿いに位置する数多くのリゾート</td>
+  <td>歴史的遺跡が豊富</td>
+</tr>
+<tr>
+  <td><img src="img/kastamonu.jpg" width="300px"/></td>
+  <td><img src="img/izmir.jpg" width="300px"/></td>
+  <td><img src="img/efes.jpg" width="350px"/></td>
+</tr>
+</table>
+
 # Part-1: Intro
 
 ## データサイエンティスト vs 機械学習エンジニア
@@ -60,7 +81,7 @@ fname <- here::here("mermaid", "ds_vs_ml.mmd")
 DiagrammeR::mermaid(
   diagram = paste(readLines(fname), collapse="\n"),
   height = "65%",
-  width = "65%")
+  width = "70%")
 ```
 </center>
 
@@ -68,22 +89,50 @@ DiagrammeR::mermaid(
 
 <center><img src="img/ml_systems.png" height="400px"/></center>
 
-# Part-2: 3件のケーススタティ
+# Part-2: ?件のケーススタティ
 
-## Data Science
+## 離脱分析によるサービス改良
 
-It is a field that borrow ideas from
+**タスク**: 顧客の離脱を防止し維持する方法の提案
 
-1. Statistics
-1. Economics
-1. Psychology
-1. Software Development
-1. Machine Learning
-1. Operations Research
+## 離脱防止施策の例
 
-## 1. TV Schedule Optimization
+<table class="table">
+  <tr>
+    <th>#</th>
+    <th>対策方法</th>
+    <th>詳細</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>アフターフォローのコミュニケーション</td>
+    <td>前に購入した商品の使い勝手はどうか等のフォローアップとして連絡をとります。顧客に自分が大切にされていることや、一人ひとりを大切にしている自社の姿勢を理解してもらいます。</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Offer Personalized Experiences</td>
+    <td>Tailor products or services to meet individual customer needs, preferences, and expectations to foster a stronger connection and sense of value.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>ロイヤルティプログラムを導入する</td>
+    <td>Reward customers for their continued business with incentives, discounts, exclusive offers, or loyalty points to encourage ongoing engagement and repeat purchases.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>顧客からのフィードバックを定期的に求める</td>
+    <td>Proactively collect customer feedback through surveys, interviews, or feedback channels to identify areas for improvement and address any concerns or dissatisfaction.</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Provide Ongoing Value and Engagement</td>
+    <td>Continuously deliver value through regular product updates, relevant content, educational resources, or community engagement to keep customers actively involved and invested in your offerings.</td>
+  </tr>
+</table>
 
-**Task**: Maximize viewership by budget, scheduling, and viewers' availability constraints
+## TV番組の放送時間の最適化による視聴率の増加
+
+**タスク**: Maximize viewership by budget, scheduling, and viewers' availability constraints
 
 <table class="table">
   <tr>
@@ -152,21 +201,30 @@ It is a field that borrow ideas from
   </tr>
 </table>
 
-## 2. Devicing Business Expansion Plans
+## 事業拡大計画の策定
 
-**Task**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
+**タスク**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
 
-<center>
-<img src="img/optimization.png" height="400px"/>
-</center>
+<center><img src="img/optimization.png" height="400px"/></center>
 
-## 3. Uncovering Barriers to User Spending
+## ユーザーの支出に対する障壁の特定
 
-**Task**: Identify barriers to user spending on company products and propose an action plan to drive revenue growth
+**タスク**: 購入の障壁を予測し、その障壁を取り除く販促政策を策定
 
-Psychological theory offers numerous theories to study consumer choices. Data scientists apply those theories in their work and produce suggestions to decision-makers based on their findings.
+<table class="table">
+  <tr>
+    <td width="280">オーガニック食品を販売している会社の<br>観点から考える<br><br>
+    1. 計画的行動理論を元に要因を考える<br>
+    2. アンケートを実施<br>
+    3. 共分散構造分析（SEM）を実行<br>
+    4. モデルの確認<br>
+    5. 結論を抽出し、政策を具体的化
+    </td>
+    <td><center><img src="img/tpb.png" height="460px"/></center></td>
+  <tr>
+</table>
 
-<center><img src="img/tpb.png" height="300px"/></center>
+## 4. ソーシャル・ネットワーク分析
 
 # Part-3
 
