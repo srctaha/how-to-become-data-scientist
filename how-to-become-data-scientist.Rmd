@@ -1,7 +1,7 @@
 ---
 title: How to become データ<br>サイエンティスト：ケース<br>スタティを通じて学ぶその役割
 author: "Sercan Ahi"
-date: "2023/06/05"
+date: "2023/07/06"
 output:
   ioslides_presentation:
     widescreen: true
@@ -11,7 +11,6 @@ output:
     css:
       - css/bootstrap-alert.css
       - css/bootstrap-table.css
-      - css/styles.css
       - css/font-awesome_6.4.0_css_all.min.css
 ---
 
@@ -19,33 +18,28 @@ output:
 library(here)
 library(DiagrammeR)
 library(knitr)
+library(kableExtra)
+library(data.table)
+library(magrittr)
 ```
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
 <script type='text/javascript' src='script/custom.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
 
 <!-- Enables HTML tags in nodes -->
 <!-- <script>mermaid.initialize({ securityLevel: 'loose' });</script> -->
 
 ```{css, echo=FALSE}
-pre {
-  margin-left: 80px;
-  width: 90%
+slides > backdrop {
+  background: white;
 }
 
-ol, ul, p {
-  font-size: 18px !important;
-}
-
-.alert {
-  font-size: 18px !important;
-}
-
-th {
-    text-align:left !important;
+slides > slide {
+  background: linear-gradient(#ffffff, #ffffff 85%, #ffffff);
+  background-color: white;
 }
 ```
 
@@ -70,9 +64,9 @@ th {
 </tr>
 </table>
 
-# Part-1: Intro
+# データサイエンスの原則
 
-## データサイエンティスト vs 機械学習エンジニア
+## (1) データサイエンスと機械学習ことなる
 
 <center>
 ```{r, echo=FALSE}
@@ -80,20 +74,78 @@ fname <- here::here("mermaid", "ds_vs_ml.mmd")
 
 DiagrammeR::mermaid(
   diagram = paste(readLines(fname), collapse="\n"),
-  height = "65%",
-  width = "70%")
+  height = "60%",
+  width = "60%")
 ```
 </center>
 
-## ML Systems
+## (2) データサイエンスは解決のごく一部に過ぎない
 
 <center><img src="img/ml_systems.png" height="400px"/></center>
 
-# Part-2: ?件のケーススタティ
+## (3) 羅生門効果がデータサイエンスにもある
 
-## 離脱分析によるサービス改良
+<div class="alert alert-warning">
+羅生門効果とは、一つの出来事において、人々がそれぞれに見解を主張すると矛盾してしまう現象のこと
+</div>
 
-**タスク**: 顧客の離脱を防止し維持する方法の提案
+データサイエンスにおける羅生門効果とは、同じデータセットの異なる解釈や分析によって対照的な、あるいは矛盾した結論が導き出されること。
+
+<center>
+<img src="img/rashomon.jpg" height="300px"/>
+<br>
+<font size="3">
+羅生門効果は、黒澤明監督の映画「羅生門」で名付けられる
+</font>
+</center>
+
+## (4) オッカムの剃刀
+
+<div class="alert alert-warning">
+オッカムの剃刀とは、ある事柄を説明するためには、必要以上に多くを仮定するべきでないとする指針
+</div>
+
+データサイエンスにおけるオッカムの剃刀は、複数の仮説や説明が与えられた場合に、最もシンプルで最も少ない仮説や説明を選ぶ原則です。
+
+<center>
+<img src="img/ockham.png" height="300px"/>
+<br>
+<font size="3">
+オッカムの剃刀は、14世紀の哲学者・神学者のオッカムが多用したことで有名になった
+</font>
+</center>
+
+## (5) 相関関係だけで十分な場合もある
+
+<div class="alert alert-warning">
+相関関係は因果関係を意味しないが、行動するためには、相関関係だけで十分な場合がある
+</div>
+
+- 相関関係は、2つの変数間の関連性や一緒に変動する傾向を示す
+- 因果関係は、ある変数の変化が別の変数に直接的な影響を与える関係
+
+<center>
+<font size="3">
+相関関係に基づいて行動すべき場合とそうでない場合
+</font>
+<br>
+<img src="img/correlation.png" height="300px"/>
+<br>
+<font size="3">
+[David Ritter, BCG](https://www.bcg.com/publications/2014/information-technology-future-strategy-david-ritter-when-act-correlation-when-not)
+</font>
+</center>
+
+# ケーススタティ
+
+## 1. 離脱分析によるサービス改良
+
+**タスク**: 顧客の離脱を防止し維持する方法を提案してください
+
+顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標だ。主な理由が二つがある。
+
+1. 新規顧客を獲得するには、既存の顧客を維持するよりも費用がかかる
+2. 新規顧客の収益は既存顧客よりも少ない
 
 ## 離脱防止施策の例
 
@@ -130,7 +182,43 @@ DiagrammeR::mermaid(
   </tr>
 </table>
 
-## TV番組の放送時間の最適化による視聴率の増加
+## Fun Fact about 離脱防止施策
+
+<div class="alert alert-warning">
+<font size="3">
+心理学には「単純計測効果」という理論がある。その理論によれば、消費やオンラインサービス利用の全般に関してアンケートに回答すると回答しているうちに、対象の商品やサービスを好ましく感じて、購入・消費・利用意欲が高まる効果があるとされている。
+</font>
+</div>
+
+<table class="table">
+  <tr>
+    <td><center><img src="img/mme-2004.png" height="340px"/></center></td>
+    <td><center><img src="img/mme-2007.png" height="340px"/></center></td>
+  <tr>
+  <tr>
+    <td><center>Morwitz and Fitzsimons, 2004</center></td>
+    <td><center>Burez and Poel, 2007</center></td>
+  </tr>
+</table>
+
+## TV番組の放送時間の最適化による視聴量の増加
+
+**タスク**: 放送サービスの視聴量を増やす
+
+$$
+視聴量 = 視聴者人数 \times 一人あたりの視聴量
+$$
+
+```{r, echo=FALSE}
+fname <- here::here("mermaid", "viewers.mmd")
+
+DiagrammeR::mermaid(
+  diagram = paste(readLines(fname), collapse="\n"),
+  height = "90%",
+  width = "90%")
+```
+
+## TV番組の放送時間の最適化による視聴量の増加
 
 **タスク**: Maximize viewership by budget, scheduling, and viewers' availability constraints
 
@@ -206,6 +294,16 @@ DiagrammeR::mermaid(
 **タスク**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
 
 <center><img src="img/optimization.png" height="400px"/></center>
+
+## 事業拡大計画の策定
+
+```{r store_location_planning, echo=FALSE, as.is=TRUE}
+DT <- fread(here::here("docs", "bip.csv"))
+
+DT %>%
+  knitr::kable(align = "r", format.args = list(big.mark = ",", scientific = FALSE)) %>%
+  kable_styling(font_size = 8)
+```
 
 ## ユーザーの支出に対する障壁の特定
 
