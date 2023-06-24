@@ -1,7 +1,6 @@
 settings.ini
 .DS_Store
 .vscode/
-*.html
 *.bkp
 *.dtmp
 

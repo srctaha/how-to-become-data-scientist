@@ -40,6 +40,7 @@ slides > backdrop {
 slides > slide {
   background: linear-gradient(#ffffff, #ffffff 85%, #ffffff);
   background-color: white;
+  background-image: none;
 }
 ```
 
@@ -64,9 +65,9 @@ slides > slide {
 </tr>
 </table>
 
-# データサイエンスの原則
+# Part I: データサイエンスの原則
 
-## (1) データサイエンスと機械学習ことなる
+## (1) データサイエンティストと機械学習エンジニアの役割が異なる
 
 <center>
 ```{r, echo=FALSE}
@@ -74,14 +75,14 @@ fname <- here::here("mermaid", "ds_vs_ml.mmd")
 
 DiagrammeR::mermaid(
   diagram = paste(readLines(fname), collapse="\n"),
-  height = "60%",
-  width = "60%")
+  height = "59%",
+  width = "59%")
 ```
 </center>
 
 ## (2) データサイエンスは解決のごく一部に過ぎない
 
-<center><img src="img/ml_systems.png" height="400px"/></center>
+<center><img src="img/ml_systems.png" height="450px"/></center>
 
 ## (3) 羅生門効果がデータサイエンスにもある
 
@@ -136,9 +137,18 @@ DiagrammeR::mermaid(
 </font>
 </center>
 
-# ケーススタティ
+# Part II: ケーススタディ
 
-## 1. 離脱分析によるサービス改良
+# ① 離脱分析
+
+## 離脱分析（Churn Analysis）とは？
+
+- 顧客やユーザーがサービスや製品の利用を中止し、離脱する要因やパターンを分析すること
+- 離脱分析は、顧客の維持やロイヤリティの向上を目指す
+- 離脱リスクの予測やリテンション施策の開発に役立つ
+- この分析には、データの収集、顧客行動のモデリング、要因の特定、予測モデルの構築などが含まれる
+
+## ビジネス課題：離脱分析によるサービス改良
 
 **タスク**: 顧客の離脱を防止し維持する方法を提案してください
 
@@ -200,6 +210,8 @@ DiagrammeR::mermaid(
     <td><center>Burez and Poel, 2007</center></td>
   </tr>
 </table>
+
+# ② 放送時間の最適化
 
 ## TV番組の放送時間の最適化による視聴量の増加
 
@@ -289,13 +301,15 @@ DiagrammeR::mermaid(
   </tr>
 </table>
 
-## 事業拡大計画の策定
+# ③ 事業拡大計画の策定
+
+## ビジネス課題：事業拡大計画の策定
 
 **タスク**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
 
 <center><img src="img/optimization.png" height="400px"/></center>
 
-## 事業拡大計画の策定
+## ビジネス課題：事業拡大計画の策定
 
 ```{r store_location_planning, echo=FALSE, as.is=TRUE}
 DT <- fread(here::here("docs", "bip.csv"))
@@ -305,9 +319,17 @@ DT %>%
   kable_styling(font_size = 8)
 ```
 
-## ユーザーの支出に対する障壁の特定
+# ④ 行動科学
 
-**タスク**: 購入の障壁を予測し、その障壁を取り除く販促政策を策定
+## 行動科学とは？
+
+- 人々の行動や心理的なプロセスを科学的に研究する学問領域
+- これには心理学、社会学、経済学などが含まれる<br>
+- 行動科学の目的は、人々の行動や意思決定のメカニズムを理解し、それを応用して個人や組織の行動を予測・変容させること
+
+## ビジネス課題：顧客の支出に対する障壁の特定
+
+**タスク**: 購入の障壁を予測し、その障壁を取り除く販促政策を策定してください
 
 <table class="table">
   <tr>
@@ -316,23 +338,65 @@ DT %>%
     2. アンケートを実施<br>
     3. 共分散構造分析（SEM）を実行<br>
     4. モデルの確認<br>
-    5. 結論を抽出し、政策を具体的化
+    5. 結論を抽出し、政策を策定
     </td>
     <td><center><img src="img/tpb.png" height="460px"/></center></td>
   <tr>
 </table>
 
-## 4. ソーシャル・ネットワーク分析
+# ⑤ ネットワーク分析
 
-# Part-3
+## ネットワーク分析とは？
 
-## 機械学習モデルとは？
+- データ間の相互関係をグラフとして表現し、ノード（要素）とエッジ（関係）の特性やパターンを解析する手法
+- これにより、複雑なデータの関係性や重要な要素の特定、情報の伝播や影響力の理解などが可能となる
 
-## 書籍
+```{r network_analysis, echo=FALSE, as.is=TRUE}
+mygraph <-
+  create_graph() %>%
+  add_pa_graph(n = 15, m = 1, set_seed = 23) %>%
+  add_gnp_graph(n = 15, p = 0.05, set_seed = 23) %>%
+  join_node_attrs(df = get_betweenness(.)) %>%
+  join_node_attrs(df = get_degree_total(.)) %>%
+  colorize_node_attrs(
+    node_attr_from = total_degree,
+    node_attr_to = fillcolor,
+    palette = "Blues",
+    alpha = 80
+  ) %>%
+  rescale_node_attrs(
+    node_attr_from = betweenness,
+    to_lower_bound = 0.5,
+    to_upper_bound = 0.5,
+    node_attr_to = height
+  ) %>%
+  select_nodes_by_id(nodes = get_articulation_points(.)) %>%
+  set_node_attrs_ws(node_attr = peripheries, value = 2) %>%
+  set_node_attrs_ws(node_attr = penwidth, value = 3) %>%
+  clear_selection() %>%
+  set_node_attr_to_display(attr = NULL)
+
+suppressWarnings({render_graph(mygraph, layout = "nicely")})
+```
+
+## ビジネス課題：ソーシャル・ネットワーク運用の改善
+
+<table class="table">
+  <tr>
+    <td><center><font size="3">1、7、8番のユーザの年代（10代、40代、70代）を予測してください</font></center></td>
+    <td><center><font size="3">夫婦だろうと思われるノード（頂点）ペアを予測してください</font></center></td>
+  </tr>
+  <tr>
+    <td><center><img src="img/network-age_group.png" width="520px"/></center></td>
+    <td><center><img src="img/network-couple.png" width="320px"/></center></td>
+  <tr>
+</table>
+
+# Part III: 今後
 
 ## データサイエンティストのキャリア
 
-## Years vs Tooling
+## 業務で利用するツールが頻繁に進化する
 
 ```{r, echo=FALSE}
 fname <- here::here("mermaid", "tooling_timeline.mmd")
