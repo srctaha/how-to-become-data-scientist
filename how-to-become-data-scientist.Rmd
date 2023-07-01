@@ -1,6 +1,6 @@
 ---
 title: How to become データ<br>サイエンティスト：ケース<br>スタティを通じて学ぶその役割
-author: "Sercan Ahi"
+author: "Sercan Ahi（セルジャン アヒ）"
 date: "2023/07/06"
 output:
   ioslides_presentation:
@@ -44,6 +44,22 @@ slides > slide {
 }
 ```
 
+## そもそもデータサイエンティストと？
+
+<font size="4">
+意思決定者をデータに基づいて合理的な判断をするよう支援する人
+<br><br>
+又は、どのソフトウェアエンジニアよりも統計学が得意で、どの統計学者よりもソフトウェアエンジニアリングが得意な人 — [Josh Wills, 2014](https://twitter.com/josh_wills/status/198093512149958656)
+</font>
+<br><br>
+<center>
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("img/data_science_venn_diagram.svg")
+```
+</center>
+
+# 詳細に入る前に<br>講師の簡単な自己紹介
+
 ## 自己紹介
 
 <table class="table">
@@ -67,7 +83,7 @@ slides > slide {
 
 # Part I: データサイエンスの原則
 
-## (1) データサイエンティストと機械学習エンジニアの役割が異なる
+## ① データサイエンティストと機械学習エンジニアの役割が異なる
 
 <center>
 ```{r, echo=FALSE}
@@ -80,11 +96,13 @@ DiagrammeR::mermaid(
 ```
 </center>
 
-## (2) データサイエンスは解決のごく一部に過ぎない
+## ② データサイエンスは解決のごく一部に過ぎない
 
-<center><img src="img/ml_systems.png" height="450px"/></center>
+<center>
+<img src="img/ml_systems.png" height="450px"/>
+</center>
 
-## (3) 羅生門効果がデータサイエンスにもある
+## ③ 羅生門効果がデータサイエンスにもある
 
 <div class="alert alert-warning">
 羅生門効果とは、一つの出来事において、人々がそれぞれに見解を主張すると矛盾してしまう現象のこと
@@ -100,7 +118,7 @@ DiagrammeR::mermaid(
 </font>
 </center>
 
-## (4) オッカムの剃刀
+## ④ オッカムの剃刀を忘れずに業務する必要がある
 
 <div class="alert alert-warning">
 オッカムの剃刀とは、ある事柄を説明するためには、必要以上に多くを仮定するべきでないとする指針
@@ -116,7 +134,7 @@ DiagrammeR::mermaid(
 </font>
 </center>
 
-## (5) 相関関係だけで十分な場合もある
+## ⑤ 相関関係だけで十分な場合もある
 
 <div class="alert alert-warning">
 相関関係は因果関係を意味しないが、行動するためには、相関関係だけで十分な場合がある
@@ -143,21 +161,166 @@ DiagrammeR::mermaid(
 
 ## 離脱分析（Churn Analysis）とは？
 
-- 顧客やユーザーがサービスや製品の利用を中止し、離脱する要因やパターンを分析すること
-- 離脱分析は、顧客の維持やロイヤリティの向上を目指す
-- 離脱リスクの予測やリテンション施策の開発に役立つ
-- この分析には、データの収集、顧客行動のモデリング、要因の特定、予測モデルの構築などが含まれる
+- 顧客やユーザーがサービスや製品の利用を中止し、離脱する要因を分析すること</td>
+- 離脱分析は、顧客の維持やロイヤリティの向上を目指す</td>
+- 離脱リスクの予測やリテンション施策の開発に役立つ</td>
+- この分析には、データの収集、顧客行動のモデリング、要因の特定、予測モデルの構築などが含まれる</td>
+
+<br><br>
+
+<div class="alert alert-warning">
+<font size="3">
+分析とは、物事や事象を細かく分けて要素を調べ、新しい情報を得ること
+</font>
+</div>
 
 ## ビジネス課題：離脱分析によるサービス改良
 
+<div class="alert alert-warning">
 **タスク**: 顧客の離脱を防止し維持する方法を提案してください
+</div>
 
-顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標だ。主な理由が二つがある。
+- 顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標だ
+- 主な理由が二つがある
 
-1. 新規顧客を獲得するには、既存の顧客を維持するよりも費用がかかる
-2. 新規顧客の収益は既存顧客よりも少ない
+    1. 新規顧客を獲得するには、既存の顧客を維持するよりも費用がかかる
+    2. 新規顧客の収益は既存顧客よりも少ない
 
-## 離脱防止施策の例
+## ステップ 1/4：属性行列の構成を決める
+
+<table class="table">
+<tr>
+  <th align="center">#</th>
+  <th align="left">カテゴリー</th>
+  <th align="left">関連属性</th>
+</tr>
+<tr>
+  <td align="center">1</td>
+  <td align="left">顧客に関する基礎情報</td>
+  <td align="left">年齢、性別、配偶者の有無、職業、住所など</td>
+</tr>
+<tr>
+  <td align="center">2</td>
+  <td align="left">サービス利用情報</td>
+  <td align="left">月額料金、通話時間、データパッケージ量など</td>
+</tr>
+<tr>
+  <td align="center">3</td>
+  <td align="left">契約内容</td>
+  <td align="left">契約期間、加入プランなど</td>
+</tr>
+<tr>
+  <td align="center">4</td>
+  <td align="left">コールセンターとの連絡</td>
+  <td align="left">苦情の件数、フィードバック内容など</td>
+</tr>
+<tr>
+  <td align="center">5</td>
+  <td align="left">テニュア</td>
+  <td align="left">離脱履歴があるか、登録してから経った期間など</td>
+</tr>
+<tr>
+  <td align="center">6</td>
+  <td align="left">利用パターン</td>
+  <td align="left">利用の多い時間帯、送信メール件数、受信電話回数など</td>
+</tr>
+<tr>
+  <td align="center">7</td>
+  <td align="left">ソーシャルメディアの感情</td>
+  <td align="left">Twitter上の感情分析結果、口コミサイトの感情分析結果など</td>
+</tr>
+<tr>
+  <td align="center">8</td>
+  <td align="left">競合相手に関する情報</td>
+  <td align="left">A社への乗り換え履歴があるか、B社への乗り換え履歴があるかなど</td>
+</tr>
+</table>
+
+## ステップ 2/4：属性行列を作成する
+
+<table class="table">
+  <tr>
+    <th align="center">#</th>
+    <th align="center">顧客ID</th>
+    <th align="right">年齢</th>
+    <th align="center">性別</th>
+    <th align="right">料金</th>
+    <th align="center">加入プラン</th>
+    <th align="center">インターネットプラン</th>
+    <th align="right">苦情件数</th>
+    <th align="center">離脱者</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">7887</td>
+    <td align="right">18</td>
+    <td align="center">男性</td>
+    <td align="right">100.29</td>
+    <td align="center">家族プラン</td>
+    <td align="center">1Gbps</td>
+    <td align="right">3</td>
+    <td align="center">Yes</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">1140</td>
+    <td align="right">68</td>
+    <td align="center">女性</td>
+    <td align="right">29.55</td>
+    <td align="center">法人プラン</td>
+    <td align="center">WiFi</td>
+    <td align="right">1</td>
+    <td align="center">No</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">8741</td>
+    <td align="right">20</td>
+    <td align="center">女性</td>
+    <td align="right">73.83</td>
+    <td align="center">家族プラン</td>
+    <td align="center">無し</td>
+    <td align="right">0</td>
+    <td align="center">No</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">3359</td>
+    <td align="right">41</td>
+    <td align="center">男性</td>
+    <td align="right">116.73</td>
+    <td align="center">家族プラン</td>
+    <td align="center">WiFi</td>
+    <td align="right">1</td>
+    <td align="center">No</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">8557</td>
+    <td align="right">20</td>
+    <td align="center">男性</td>
+    <td align="right">37.51</td>
+    <td align="center">法人プラン</td>
+    <td align="center">10Gbps</td>
+    <td align="right">1</td>
+    <td align="center">Yes</td>
+  </tr>
+</table>
+<center>
+.<br>
+.<br>
+.
+</center>
+
+## ステップ 3/4：決定木を学習する
+
+<center>
+```{r, echo=FALSE, out.width = "800px"}
+knitr::include_graphics("img/churn_analysis.svg")
+```
+</center>
+
+## ステップ 4/4：結果を解釈し、防止施策を策定する
 
 <table class="table">
   <tr>
@@ -172,7 +335,7 @@ DiagrammeR::mermaid(
   </tr>
   <tr>
     <td>2</td>
-    <td>Offer Personalized Experiences</td>
+    <td>パーソナライズされたエクスペリエンスを提供する</td>
     <td>Tailor products or services to meet individual customer needs, preferences, and expectations to foster a stronger connection and sense of value.</td>
   </tr>
   <tr>
@@ -187,7 +350,7 @@ DiagrammeR::mermaid(
   </tr>
   <tr>
     <td>5</td>
-    <td>Provide Ongoing Value and Engagement</td>
+    <td>継続的な価値とエンゲージメントを提供する</td>
     <td>Continuously deliver value through regular product updates, relevant content, educational resources, or community engagement to keep customers actively involved and invested in your offerings.</td>
   </tr>
 </table>
@@ -215,7 +378,9 @@ DiagrammeR::mermaid(
 
 ## TV番組の放送時間の最適化による視聴量の増加
 
+<div class="alert alert-warning">
 **タスク**: 放送サービスの視聴量を増やす
+</div>
 
 $$
 視聴量 = 視聴者人数 \times 一人あたりの視聴量
@@ -305,7 +470,9 @@ DiagrammeR::mermaid(
 
 ## ビジネス課題：事業拡大計画の策定
 
+<div class="alert alert-warning">
 **タスク**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
+</div>
 
 <center><img src="img/optimization.png" height="400px"/></center>
 
@@ -319,7 +486,7 @@ DT %>%
   kable_styling(font_size = 8)
 ```
 
-# ④ 行動科学
+# ④ 顧客支出の向上
 
 ## 行動科学とは？
 
@@ -329,7 +496,9 @@ DT %>%
 
 ## ビジネス課題：顧客の支出に対する障壁の特定
 
+<div class="alert alert-warning">
 **タスク**: 購入の障壁を予測し、その障壁を取り除く販促政策を策定してください
+</div>
 
 <table class="table">
   <tr>
@@ -340,7 +509,7 @@ DT %>%
     4. モデルの確認<br>
     5. 結論を抽出し、政策を策定
     </td>
-    <td><center><img src="img/tpb.png" height="460px"/></center></td>
+    <td><center><img src="img/tpb.png" height="420px"/></center></td>
   <tr>
 </table>
 
