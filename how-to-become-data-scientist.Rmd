@@ -23,11 +23,9 @@ library(data.table)
 library(magrittr)
 ```
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-<script type='text/javascript' src='script/custom.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+<script src="script/custom.js"></script>
 
 <!-- Enables HTML tags in nodes -->
 <!-- <script>mermaid.initialize({ securityLevel: 'loose' });</script> -->
@@ -41,6 +39,27 @@ slides > slide {
   background: linear-gradient(#ffffff, #ffffff 85%, #ffffff);
   background-color: white;
   background-image: none;
+}
+
+slides > slide:not(.nobackground):before {
+  width: 55px;
+  height: 40px;
+  background-size: 55px 40px;
+}
+
+footer:after {
+  font-size: 6pt;
+  content: attr(label);
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 70%;
+  text-align: center;
+  bottom: 20px;
+  line-height: 1.5;
+  display: block;
 }
 ```
 
@@ -81,7 +100,15 @@ knitr::include_graphics("img/data_science_venn_diagram.svg")
 </tr>
 </table>
 
-# Part I: データサイエンスの原則
+## 目次
+
+コンテンツが3つのパートに分かれている
+
+1. データサイエンスの概念
+2. 5つのケーススタディ
+3. データサイエンスの将来
+
+# Part I: データサイエンスの概念
 
 ## ① データサイエンティストと機械学習エンジニアの役割が異なる
 
@@ -148,7 +175,7 @@ DiagrammeR::mermaid(
 相関関係に基づいて行動すべき場合とそうでない場合
 </font>
 <br>
-<img src="img/correlation.png" height="300px"/>
+<img src="img/correlation.png" height="280px"/>
 <br>
 <font size="3">
 [David Ritter, BCG](https://www.bcg.com/publications/2014/information-technology-future-strategy-david-ritter-when-act-correlation-when-not)
@@ -177,7 +204,9 @@ DiagrammeR::mermaid(
 ## ビジネス課題：離脱分析によるサービス改良
 
 <div class="alert alert-warning">
+<font size="3">
 **タスク**: 顧客の離脱を防止し維持する方法を提案してください
+</font>
 </div>
 
 - 顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標だ
@@ -379,7 +408,9 @@ knitr::include_graphics("img/churn_analysis.svg")
 ## TV番組の放送時間の最適化による視聴量の増加
 
 <div class="alert alert-warning">
-**タスク**: 放送サービスの視聴量を増やす
+<font size="3">
+**タスク**: 放送サービスの視聴量を増やすための方法を提案してください
+</font>
 </div>
 
 $$
@@ -471,10 +502,12 @@ DiagrammeR::mermaid(
 ## ビジネス課題：事業拡大計画の策定
 
 <div class="alert alert-warning">
-**タスク**: Minimize the distance to existing customers by renting nearby offices under rental and resourcing constraints, and current and future sales forecasts
+<font size="3">
+**タスク**: 企業として、既存のお客様との距離を最小限に抑えたい。賃貸料や将来の販売予測などを考慮しながら、具体的にどのオフィスを借りるべきかを決めてください。
+</font>
 </div>
 
-<center><img src="img/optimization.png" height="400px"/></center>
+<center><img src="img/optimization-offices.png" height="400px"/></center>
 
 ## ビジネス課題：事業拡大計画の策定
 
@@ -485,6 +518,36 @@ DT %>%
   knitr::kable(align = "r", format.args = list(big.mark = ",", scientific = FALSE)) %>%
   kable_styling(font_size = 8)
 ```
+
+## 数理最適化はこの課題の解決に適している
+
+数理最適化は、与えられた<b>条件</b>と<b>選択肢</b>に基づいて最適な要素を選ぶ方法
+
+```{r, echo=FALSE}
+fname <- here::here("mermaid", "optimization.mmd")
+
+DiagrammeR::mermaid(
+  diagram = paste(readLines(fname), collapse="\n"),
+  height = "90%",
+  width = "100%")
+```
+
+## 数理最適化に様々な応用がある
+
+<table class="table">
+  <tr>
+    <td>ルート配送問題（物流業界）</td>
+    <td><center><img src="img/optimization-roads.png" height="150px"/></center></td>
+  </tr>
+  <tr>
+    <td>ポートフォリオ最適化（金融業界）</td>
+    <td><center><img src="img/optimization-portfolio.jpg" height="150px"/></center></td>
+  </tr>
+  <tr>
+    <td>従業員シフトスケジューリング最適化（サービス業界）</td>
+    <td><center><img src="img/optimization-shift.jpg" height="100px"/></center></td>
+  </tr>
+</table>
 
 # ④ 顧客支出の向上
 
@@ -561,7 +624,7 @@ suppressWarnings({render_graph(mygraph, layout = "nicely")})
   <tr>
 </table>
 
-# Part III: 今後
+# Part III: データサイエンスの将来
 
 ## データサイエンティストのキャリア
 

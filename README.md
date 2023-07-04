@@ -35,7 +35,7 @@
     rm ${RLIBS_PATH}/DiagrammeR/htmlwidgets/lib/mermaid/dist/mermaid.css
 
     # Download a more recent mermaid.js
-    export MERMAID_VER=10.2.0
+    export MERMAID_VER=10.2.4
     export PATH2JS=${RLIBS_PATH}/DiagrammeR/htmlwidgets/lib/mermaid/dist/mermaid.slim.min.js
     wget \
       "https://cdnjs.cloudflare.com/ajax/libs/mermaid/${MERMAID_VER}/mermaid.min.js" \

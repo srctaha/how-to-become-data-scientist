@@ -1,0 +1,25 @@
+%%{init: {'theme': 'neutral', 'flowchart': {'rankSpacing': 80, 'htmlLabels': true}}}%%
+
+flowchart
+  root("数理最適化")
+  o("目的関数")
+  p("変数")
+  c("制約条件")
+  
+  oe("オフィスと既存のお客様の<br>距離を最小化したい")
+  pe("借りる可能なオフィス")
+  ce1("賃貸料を<br>最小化したい")
+  ce2("将来の販売予測を<br>最大化したい")
+  ce3("競合相手の店舗数が<br>少ない場所が良い")
+  ce4("など")
+  
+  root ---|1| o
+  root ---|2| p
+  root ---|3| c
+  
+  o -.- oe
+  p -.- pe
+  c -.- ce1
+  c -.- ce2
+  c -.- ce3
+  c -.- ce4
