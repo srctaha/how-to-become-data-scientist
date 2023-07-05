@@ -66,7 +66,7 @@ footer:after {
 ## そもそもデータサイエンティストと？
 
 <font size="4">
-意思決定者をデータに基づいて合理的な判断をするよう支援する人
+意思決定者を**データに基づいて**合理的な判断をするよう支援する人
 <br><br>
 又は、どのソフトウェアエンジニアよりも統計学が得意で、どの統計学者よりもソフトウェアエンジニアリングが得意な人 — [Josh Wills, 2014](https://twitter.com/josh_wills/status/198093512149958656)
 </font>
@@ -100,15 +100,32 @@ knitr::include_graphics("img/data_science_venn_diagram.svg")
 </tr>
 </table>
 
-## 目次
+## 本日のアジェンダ
 
-コンテンツが3つのパートに分かれている
+コンテンツが3つのパートに分かれています
 
 1. データサイエンスの概念
 2. 5つのケーススタディ
-3. データサイエンスの将来
+3. データサイエンスの今後
 
 # Part I: データサイエンスの概念
+
+## ① データサイエンティストと機械学習エンジニアの役割が異なる
+
+<font size="2">
+1. 多くの企業がデータサイエンティストと機械学習エンジニアのポジションを同じ意味で使用していますが、実際には期待されるアウトプットが異なるため、両方は**異なる職業**です。<br>
+2. データサイエンティストの主なアウトプットが意思決定者を納得させるための**プレゼンテーション資料**で、機械学習エンジニアの主なアウトプットが**ソフトウェア**になります。<br>
+3. 意思決定者を納得させるためには、品質の高いプレゼンテーション資料が不可欠です。そのため、データサイエンティストが所属する企業の**ビジネスをきちんと理解する**必要があります。<br>
+4. データサイエンティストも機械学習エンジニアもコードを書きますが、商用のソフトウェアを開発するのは主に機械学習エンジニアの役割です。そのため、機械学習エンジニアは**コーディングのスキル**が求められます。<br>
+5. 本日は、**データサイエンティスト**の職業についてお話しします。<br>
+</font>
+
+<table class="table">
+  <tr>
+    <td><center><img src="img/campaign-creators-gMsnXqILjp4-unsplash.jpg" height="150px"/><br><a href="https://unsplash.com/photos/gMsnXqILjp4"><font size="2">データサイエンティストのイメージ</font></a></center></td>
+    <td><center><img src="img/tim-van-der-kuip-CPs2X8JYmS8-unsplash.jpg" height="150px"/><br><a href="https://unsplash.com/photos/CPs2X8JYmS8"><font size="2">機械学習エンジニアのイメージ</font></a></center></td>
+  </tr>
+</table>
 
 ## ① データサイエンティストと機械学習エンジニアの役割が異なる
 
@@ -118,15 +135,15 @@ fname <- here::here("mermaid", "ds_vs_ml.mmd")
 
 DiagrammeR::mermaid(
   diagram = paste(readLines(fname), collapse="\n"),
-  height = "59%",
-  width = "59%")
+  height = "60%",
+  width = "60%")
 ```
 </center>
 
-## ② データサイエンスは解決のごく一部に過ぎない
+## ② データサイエンティストのプレゼンテーション資料は解決のごく一部に過ぎない
 
 <center>
-<img src="img/ml_systems.png" height="450px"/>
+<img src="img/ds_impact.jpg" height="420px"/>
 </center>
 
 ## ③ 羅生門効果がデータサイエンスにもある
@@ -148,7 +165,7 @@ DiagrammeR::mermaid(
 ## ④ オッカムの剃刀を忘れずに業務する必要がある
 
 <div class="alert alert-warning">
-オッカムの剃刀とは、ある事柄を説明するためには、必要以上に多くを仮定するべきでないとする指針
+オッカムの剃刀とは、ある事柄を説明する際には必要以上に多くの仮定をすべきではないという指針
 </div>
 
 データサイエンスにおけるオッカムの剃刀は、複数の仮説や説明が与えられた場合に、最もシンプルで最も少ない仮説や説明を選ぶ原則です。
@@ -188,32 +205,26 @@ DiagrammeR::mermaid(
 
 ## 離脱分析（Churn Analysis）とは？
 
-- 顧客やユーザーがサービスや製品の利用を中止し、離脱する要因を分析すること</td>
-- 離脱分析は、顧客の維持やロイヤリティの向上を目指す</td>
-- 離脱リスクの予測やリテンション施策の開発に役立つ</td>
-- この分析には、データの収集、顧客行動のモデリング、要因の特定、予測モデルの構築などが含まれる</td>
-
-<br><br>
-
 <div class="alert alert-warning">
-<font size="3">
-分析とは、物事や事象を細かく分けて要素を調べ、新しい情報を得ること
-</font>
+先ず、分析とは、物事や事象を細かく分けて要素を調べ、新しい情報を得ることです
 </div>
+
+- 離脱分析とは、顧客がサービスや製品の利用を中止し、離脱する要因を分析することです</td>
+- 離脱分析は、顧客の維持やロイヤリティの向上を目指します</td>
+- 離脱リスクの予測やリテンション施策の開発に役立ちます</td>
+- この分析には、データの収集、顧客行動のモデリング、要因の特定、予測モデルの構築などが含まれます</td>
 
 ## ビジネス課題：離脱分析によるサービス改良
 
 <div class="alert alert-warning">
-<font size="3">
 **タスク**: 顧客の離脱を防止し維持する方法を提案してください
-</font>
 </div>
 
-- 顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標だ
-- 主な理由が二つがある
+- 顧客満足度の向上及び離脱の予防は、企業にとって重要な経営目標です
+- それの理由が主に二つあります
 
-    1. 新規顧客を獲得するには、既存の顧客を維持するよりも費用がかかる
-    2. 新規顧客の収益は既存顧客よりも少ない
+    1. 新規顧客を獲得するには、既存の顧客を維持するよりも費用がかかります
+    2. 新規顧客の収益は既存顧客よりも少ないです
 
 ## ステップ 1/4：属性行列の構成を決める
 
@@ -353,34 +364,32 @@ knitr::include_graphics("img/churn_analysis.svg")
 
 <table class="table">
   <tr>
-    <th>#</th>
-    <th>対策方法</th>
-    <th>詳細</th>
+    <th align="left">#</th>
+    <th align="left">対策方法</th>
   </tr>
   <tr>
     <td>1</td>
-    <td>アフターフォローのコミュニケーション</td>
-    <td>前に購入した商品の使い勝手はどうか等のフォローアップとして連絡をとります。顧客に自分が大切にされていることや、一人ひとりを大切にしている自社の姿勢を理解してもらいます。</td>
+    <td>サービスや製品において問題となる可能性のある部分を改善する</td>
   </tr>
   <tr>
     <td>2</td>
     <td>パーソナライズされたエクスペリエンスを提供する</td>
-    <td>Tailor products or services to meet individual customer needs, preferences, and expectations to foster a stronger connection and sense of value.</td>
   </tr>
   <tr>
     <td>3</td>
     <td>ロイヤルティプログラムを導入する</td>
-    <td>Reward customers for their continued business with incentives, discounts, exclusive offers, or loyalty points to encourage ongoing engagement and repeat purchases.</td>
   </tr>
   <tr>
     <td>4</td>
     <td>顧客からのフィードバックを定期的に求める</td>
-    <td>Proactively collect customer feedback through surveys, interviews, or feedback channels to identify areas for improvement and address any concerns or dissatisfaction.</td>
   </tr>
   <tr>
     <td>5</td>
-    <td>継続的な価値とエンゲージメントを提供する</td>
-    <td>Continuously deliver value through regular product updates, relevant content, educational resources, or community engagement to keep customers actively involved and invested in your offerings.</td>
+    <td>他社と協力して顧客が喜ぶ可能性のあるコラボレーションを行う</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>など</td>
   </tr>
 </table>
 
@@ -408,9 +417,7 @@ knitr::include_graphics("img/churn_analysis.svg")
 ## TV番組の放送時間の最適化による視聴量の増加
 
 <div class="alert alert-warning">
-<font size="3">
 **タスク**: 放送サービスの視聴量を増やすための方法を提案してください
-</font>
 </div>
 
 $$
@@ -422,22 +429,20 @@ fname <- here::here("mermaid", "viewers.mmd")
 
 DiagrammeR::mermaid(
   diagram = paste(readLines(fname), collapse="\n"),
-  height = "90%",
-  width = "90%")
+  height = "80%",
+  width = "80%")
 ```
 
 ## TV番組の放送時間の最適化による視聴量の増加
 
-**タスク**: Maximize viewership by budget, scheduling, and viewers' availability constraints
-
 <table class="table">
   <tr>
-    <th>Time</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
+    <th align="left">時間帯　</th>
+    <th align="left">月曜日</th>
+    <th align="left">火曜日</th>
+    <th align="left">水曜日</th>
+    <th align="left">木曜日</th>
+    <th align="left">金曜日</th>
   </tr>
   <tr>
     <td>8:00-12:00</td>
@@ -496,6 +501,10 @@ DiagrammeR::mermaid(
     <td>Breaking Bad</td>
   </tr>
 </table>
+
+## 遺伝的アルゴリズムで最適化が可能に
+
+<center><img src="img/ga.jpg" height="480px"/></center>
 
 # ③ 事業拡大計画の策定
 
@@ -624,11 +633,11 @@ suppressWarnings({render_graph(mygraph, layout = "nicely")})
   <tr>
 </table>
 
-# Part III: データサイエンスの将来
+# Part III: データサイエンスの今後
 
-## データサイエンティストのキャリア
+## 業務で利用するツールが頻繁に進化し続ける
 
-## 業務で利用するツールが頻繁に進化する
+私（サンプル１ですが）の経験から考えると・・・
 
 ```{r, echo=FALSE}
 fname <- here::here("mermaid", "tooling_timeline.mmd")
@@ -639,6 +648,29 @@ DiagrammeR::mermaid(
   width = "100%")
 ```
 
-## データサイエンスの今後
+## ChatGPT（生成系AI）時代におけるデータサイエンス
+
+<table class="table">
+  <tr>
+    <th align="left">#</th>
+    <th align="left">何が変わったの？</th>
+    <th align="left">それはなんで大事？</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>AlexaやSiriのようなデジタルアシスタントの改善版を作ることが可能になりました</td>
+    <td>データサイエンティストが高度な質問応答システムを作れるようになりました</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>ラベル付きデータの自動生成が可能にになりました</td>
+    <td>データサイエンティストがデータの提供を待つ時間が減りました</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>人工的な市場やビジネス調査を行えるようになりました</td>
+    <td>データサイエンティストが自分で市場やビジネスをある程度理解できるようになりました</td>
+  </tr>
+</table>
 
 # Thank you
