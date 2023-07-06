@@ -2,8 +2,14 @@
 
 ## Setup
 
-1. Install R for MacOS from [CRAN](https://cran.r-project.org/bin/macosx/).
-2. Create a dedicated folder for the installed R packages and let R know about it.
+1. Install R and RStduio for MacOS.
+
+    ```bash
+    brew install --cask r
+    brew install --cask rstudio
+    ```
+
+1. Create a dedicated folder for the installed R packages and let R know about it.
 
     ```bash
     export RLIBS_PATH=/Users/$(whoami)/tools/rlibs
@@ -11,7 +17,7 @@
     echo ".libPaths(\"${RLIBS_PATH}\")" >> ~/.Rprofile
     ```
 
-3. Install `knitr`, `DiagrammeR`, and `rmarkdown` packages.
+1. Install `knitr`, `DiagrammeR`, and `rmarkdown` packages.
 
     ```bash
     # knitr
@@ -25,9 +31,13 @@
     # rmarkdown
     mycmd=install.packages(\"rmarkdown\", lib=\"${RLIBS_PATH}\", repos=\"https://cloud.r-project.org\")
     Rscript -e $mycmd
+
+    # kableExtra
+    mycmd=install.packages(\"kableExtra\", lib=\"${RLIBS_PATH}\", repos=\"https://cloud.r-project.org\")
+    Rscript -e $mycmd
     ```
 
-4. Upgrade `mermaid.js` bundled with the `DiagrammeR` package. Note that we will need `mermaid.js` for creating drawings programmatically.
+1. Upgrade `mermaid.js` bundled with the `DiagrammeR` package. Note that we will need `mermaid.js` for creating drawings programmatically.
 
     ```bash
     # Remove original copies
